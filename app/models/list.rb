@@ -1,5 +1,6 @@
 class List < ApplicationRecord
-belong_to: booksmarks
-validates :name, uniqueness: true
-validates :name, presence: true
+  has_many :bookmarks, dependent: :destroy
+  has_many :movies, through: :bookmarks
+
+  validates :name, uniqueness: true, presence: true
 end
